@@ -25,6 +25,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: playground
 
       - name: Build playground
         run: npm run build
