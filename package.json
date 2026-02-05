@@ -1,0 +1,86 @@
+{
+  "name": "react-marquee-ticker",
+  "version": "0.4.1",
+  "description": "A lightweight React ticker component with vertical looping and optional horizontal marquee for long text.",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "legacy"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "dev": "yarn --cwd playground dev",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "build:css": "lessc src/index.less dist/index.css",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build": "tsdown && npm run build:types && npm run build:css && npm run post-build",
+    "post-build": "ts-node scripts/post-build.ts",
+    "prepublishOnly": "npm run lint && npm run build"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json}": "prettier --write"
+  },
+  "peerDependencies": {
+    "react": ">=0.14",
+    "react-dom": ">=0.14"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^2.0.1",
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^25.2.0",
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.53.1",
+    "@typescript-eslint/parser": "^8.53.1",
+    "esbuild": "^0.27.2",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^17.1.0",
+    "less": "^4.5.1",
+    "lint-staged": "^16.2.7",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-loader": "^8.2.0",
+    "postcss-modules": "^6.0.1",
+    "prettier": "^3.8.1",
+    "ts-node": "^10.9.2",
+    "tsdown": "^0.20.1",
+    "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": {
+      "types": {
+        "import": "./dist/index.d.mts",
+        "require": "./dist/index.d.cts"
+      },
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./legacy": {
+      "types": "./dist/index.d.ts",
+      "require": "./legacy/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=24.12.0",
+    "npm": ">=11.0.0"
+  },
+  "keywords": [
+    "react",
+    "marquee",
+    "ticker",
+    "scroll"
+  ],
+  "license": "MIT"
+}

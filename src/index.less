@@ -1,0 +1,75 @@
+.react-marquee-ticker {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  &-list-wrapper {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  &-list {
+    display: block;
+    white-space: normal;
+    transform: translateY(0);
+    will-change: transform;
+  }
+
+  .ticker-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ticker-mask {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .ticker-text {
+    display: inline-block;
+    transform: translateX(0);
+    will-change: transform;
+    line-height: normal;
+    font-size: 14px;
+    width: 100%;
+    overflow: hidden;
+
+    &.marquee {
+      animation: textMarquee var(--marquee-duration) linear forwards;
+    }
+  }
+
+  &-auto-marquee {
+    .ticker-mask {
+      white-space: nowrap;
+    }
+    .ticker-text {
+      white-space: nowrap;
+      width: auto;
+      overflow: initial;
+      text-overflow: initial;
+    }
+  }
+
+  &-single-line {
+    .ticker-text {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+@keyframes textMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(var(--scroll-x));
+  }
+}
