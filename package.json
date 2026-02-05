@@ -1,7 +1,7 @@
 {
   "name": "react-marquee-ticker",
-  "version": "0.4.1",
-  "description": "A lightweight React ticker component with vertical looping and optional horizontal marquee for long text.",
+  "version": "0.4.2",
+  "description": "A lightweight React component for vertically looping texts, with optional horizontal marquee animation when content overflows.",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "type": "module",
@@ -73,14 +73,16 @@
     "./package.json": "./package.json"
   },
   "engines": {
-    "node": ">=24.12.0",
+    "node": ">=24",
     "npm": ">=11.0.0"
   },
   "keywords": [
     "react",
     "marquee",
     "ticker",
-    "scroll"
+    "text-ticker",
+    "vertical-scroll",
+    "horizontal-scroll"
   ],
   "license": "MIT"
 }

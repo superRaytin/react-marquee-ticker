@@ -34,9 +34,8 @@ The above is equivalent to:
 
 > ⚠️ When the `items` prop is provided, `children` will be ignored
 
-## Demo
+## 🎮 Demo
 
-Live demo:  
 👉 https://superRaytin.github.io/react-marquee-ticker/
 
 
@@ -59,11 +58,10 @@ npm i react-marquee-ticker
 | `itemHeight` | `string` | **required** | Height of each item (e.g. `"47px"`) |
 | `style` | `React.CSSProperties` | `-` | Inline styles for the container |
 | `className` | `string` | `-` | Container class name |
-| `singleLine` | `boolean` | `false` | Enable single-line mode with ellipsis (`nowrap + ellipsis`) |
+| `singleLine` | `boolean` | `false` | Enable single-line mode with ellipsis (`nowrap + ellipsis`). Only works when `autoMarquee={false}` |
 | `interval` | `number` | `3000` | Stay duration for each item (ms) |
 | `speed` | `number` | `400` | Vertical scroll speed (ms) |
 | `paused` | `boolean` | `false` | Pause vertical scrolling |
-| `children` | `ReactNode[]` | Alternative way to provide items |
 
 ### Horizontal Marquee (Overflow)
 
@@ -99,7 +97,7 @@ Example:
 
 | Prop | Type | Description |
 |----|----|----|
-| `children` | `ReactNode[]` | Alternative way to provide items |
+| `children` | `ReactElement[]` | Alternative way to provide items |
 
 When `autoMarquee` is enabled and the content **may exceed the container width**, it is recommended to use the `Mask` + `Text` structure to ensure horizontal scrolling works correctly:
 
@@ -138,7 +136,7 @@ When `autoMarquee` is enabled and the content **may exceed the container width**
 - The component measures the actual width of `Text` to calculate scroll distance and duration automatically
 
 
-## Legacy React Support
+## 🕰️ Legacy React Support
 
 For very old React versions **before hooks** (for example **React 0.14.x**), this package provides a legacy entry:
 
