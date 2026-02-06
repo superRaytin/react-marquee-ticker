@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import MarqueeTicker from 'react-marquee-ticker'
 import '../src/index.less'
 import './app.less'
@@ -11,9 +11,25 @@ const demoData = [
 ]
 
 export default function App() {
+  const [paused, setPaused] = useState<boolean | null>(null)
+  
   useEffect(() => {
     prismInit()
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
   }, [])
+
+  const handleVisibilityChange = () => {
+    if (document.hidden) {
+      setPaused(true)
+    } else {
+      setTimeout(() => setPaused(false), 500)
+    }
+  }
 
   const prismInit = () => {
     const codeEls = document.querySelectorAll('.code')
@@ -52,14 +68,47 @@ export default function App() {
       <div className='block'>
         <div className='left'>
           <div className='left'>
-            <h1>Provide items by children</h1>
+            <h1>Provide items via children</h1>
             <div className='preview'>
-              <MarqueeTicker itemHeight='60px' autoMarquee={false}>
+              <MarqueeTicker itemHeight='30px'>
                 <MarqueeTicker.Item key={1}>
                   Short notice
                 </MarqueeTicker.Item>
                 <MarqueeTicker.Item key={2}>
                   This is a very long notice that will scroll horizontally when overflowed.
+                </MarqueeTicker.Item>
+              </MarqueeTicker>
+            </div>
+          </div>
+        </div>
+        <pre className="demo-code">
+          <code className="code language-jsx">
+            {
+`<MarqueeTicker itemHeight='30px'>
+  <MarqueeTicker.Item key={1}>
+    Short notice
+  </MarqueeTicker.Item>
+  <MarqueeTicker.Item key={2}>
+    This is a very long notice that will scroll horizontally when overflowed.
+  </MarqueeTicker.Item>
+</MarqueeTicker>
+`
+            }
+          </code>
+        </pre>
+      </div>
+
+      <div className='block'>
+        <div className='left'>
+          <div className='left'>
+            <h1>Disable horizontal marquee scrolling</h1>
+            <div className='preview'>
+              <MarqueeTicker itemHeight='60px' autoMarquee={false}>
+                <MarqueeTicker.Item key={1}>
+                  Lightweight React marquee component, zero runtime dependencies.
+                </MarqueeTicker.Item>
+                <MarqueeTicker.Item key={2}>
+                  Vertical ticker with optional horizontal marquee for long content.
                       &nbsp;<a href="#">See Details</a>
                 </MarqueeTicker.Item>
               </MarqueeTicker>
@@ -71,10 +120,10 @@ export default function App() {
             {
 `<MarqueeTicker itemHeight='60px' autoMarquee={false}>
   <MarqueeTicker.Item key={1}>
-    Short notice
+    Lightweight React marquee component, zero runtime dependencies.
   </MarqueeTicker.Item>
   <MarqueeTicker.Item key={2}>
-    This is a very long notice that will scroll horizontally when overflowed.
+    Vertical ticker with optional horizontal marquee for long content.
         &nbsp;<a href="#">See Details</a>
   </MarqueeTicker.Item>
 </MarqueeTicker>
@@ -86,9 +135,9 @@ export default function App() {
 
       <div className='block'>
         <div className='left'>
-          <h1>Provide items by children 2</h1>
+          <h1>Using a Mask + Text structure</h1>
           <div className='preview'>
-            <MarqueeTicker itemHeight='60px' autoMarquee={true}>
+            <MarqueeTicker itemHeight='30px' autoMarquee={true}>
               <MarqueeTicker.Item key={1}>
                 <MarqueeTicker.Mask>
                   <MarqueeTicker.Text>Short notice</MarqueeTicker.Text>
@@ -108,7 +157,7 @@ export default function App() {
         <pre className="demo-code">
           <code className="code language-jsx">
             {
-`<MarqueeTicker itemHeight='60px' autoMarquee>
+`<MarqueeTicker itemHeight='30px' autoMarquee>
   <MarqueeTicker.Item key={1}>
     <MarqueeTicker.Mask>
       <MarqueeTicker.Text>Short notice</MarqueeTicker.Text>
@@ -131,7 +180,7 @@ export default function App() {
 
       <div className='block'>
         <div className='left'>
-          <h1>Single line</h1>
+          <h1>Single-line mode with ellipsis</h1>
           <div className='preview'>
             <MarqueeTicker
               singleLine
@@ -187,6 +236,43 @@ export default function App() {
           </code>
         </pre>
       </div>
+
+      <div className='block'>
+        <div className='left'>
+          <h1>Pause and resume scrolling on page visibility change</h1>
+          <div className='preview'>
+            <MarqueeTicker
+              itemHeight='30px'
+              items={demoData}
+              paused={!!paused}
+            />
+          </div>
+          {paused !== null && (
+            <div style={{ marginTop: '10px', fontSize: '20px' }}>{paused ? 'paused' : 'resume'}</div>
+          )}
+        </div>
+        <pre className="demo-code">
+          <code className="code language-jsx">
+            {
+`<MarqueeTicker
+  itemHeight='30px'
+  items={[
+    'Short notice',
+    'This is a very long notice that will scroll horizontally when overflowed',
+  ]}
+  paused={paused}
+/>
+
+// Observe page visibility state
+document.addEventListener('visibilitychange', () => {
+  setPaused(document.hidden)
+})
+`
+            }
+          </code>
+        </pre>
+      </div>
+
     </div>
   )
 }

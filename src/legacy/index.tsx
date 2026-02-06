@@ -83,7 +83,7 @@ export default class MarqueeTicker extends React.Component<
     const { autoMarquee, singleLine } = this.props
     const listContainer = this._containerRef.querySelector('.react-marquee-ticker-list')
 
-    listContainer.style.cssText = 'transform: translateY(0)'
+    listContainer.style.cssText = 'margin-top: 0'
 
     this._containerRef.classList[autoMarquee ? 'add' : 'remove'](
       'react-marquee-ticker-auto-marquee',
@@ -101,7 +101,7 @@ export default class MarqueeTicker extends React.Component<
     const { itemHeight, speed, autoMarquee, interval } = this.props
     const listContainer = this._containerRef.querySelector('.react-marquee-ticker-list')
 
-    listContainer.style.cssText = `transform: translateY(-${itemHeight}); transition: transform ${speed}ms`
+    listContainer.style.cssText = `margin-top: -${itemHeight}; transition: ${speed}ms`
 
     this._shiftTimer = setTimeout(() => {
       const newItems = [...this.state.items]
@@ -109,7 +109,7 @@ export default class MarqueeTicker extends React.Component<
       newItems.push(firstItem)
 
       this.setState({ items: newItems }, () => {
-        listContainer.style.cssText = 'transform: translateY(0)'
+        listContainer.style.cssText = 'margin-top: 0'
 
         let marqueeTime = 0
         if (autoMarquee) {

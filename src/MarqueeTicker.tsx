@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-// import { useTicker } from './useTicker';
 import type { MarqueeTickerProps, MarqueTickerItemData, SlotRender, Timer } from './types'
 import Item from './components/Item'
 import MarqueeMask from './components/Mask'
@@ -59,7 +58,7 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
     )
     if (!listContainer) return
 
-    listContainer.style.cssText = 'transform: translateY(0)'
+    listContainer.style.cssText = 'margin-top: 0'
 
     _containerRef.current?.classList[autoMarquee ? 'add' : 'remove'](
       'react-marquee-ticker-auto-marquee',
@@ -72,8 +71,6 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
 
     if (items && items.length > 1) start()
   }
-
-  // const ref = useTicker(items.length, itemHeight, interval);
 
   const start = () => {
     let marqueeTime = 0
@@ -102,7 +99,7 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
     )
     if (!listContainer) return
 
-    listContainer.style.cssText = `transform: translateY(-${itemHeight}); transition: transform ${speed}ms`
+    listContainer.style.cssText = `margin-top: -${itemHeight}; transition: ${speed}ms`
 
     _shiftTimer.current = setTimeout(() => {
       const newItems = [...items]
@@ -111,7 +108,7 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
 
       setItems(newItems)
 
-      listContainer.style.cssText = 'transform: translateY(0)'
+      listContainer.style.cssText = 'margin-top: 0'
     }, speed)
   }
 
