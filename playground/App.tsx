@@ -11,6 +11,12 @@ const demoData = [
   'Supports both modern React and legacy React 0.14.x without breaking changes.',
 ]
 
+const demoData2 = [
+  'Works out of the box — no CSS import required.',
+  'Simple API, predictable behavior.',
+  'Designed for dashboards, notices, and system messages.',
+]
+
 export default function App() {
   const [paused, setPaused] = useState<boolean | null>(null)
   
@@ -82,7 +88,7 @@ export default function App() {
                   This is a very long notice that will scroll horizontally when overflowed.
                 </MarqueeTicker.Item>
                 <MarqueeTicker.Item key={3}>
-                  Another short one
+                  Supports both modern React and legacy React 0.14.x without breaking changes.
                 </MarqueeTicker.Item>
               </MarqueeTicker>
             </div>
@@ -99,7 +105,7 @@ export default function App() {
     This is a very long notice that will scroll horizontally when overflowed.
   </MarqueeTicker.Item>
   <MarqueeTicker.Item key={3}>
-    Another short one
+    Supports both modern React and legacy React 0.14.x without breaking changes.
   </MarqueeTicker.Item>
 </MarqueeTicker>
 `
@@ -224,7 +230,7 @@ export default function App() {
           <div className='preview'>
             <MarqueeTicker
               itemHeight='30px'
-              items={demoData}
+              items={demoData2}
               prefix={() => <span className="prefix">🔔</span>}
               suffix={() => <span className="suffix">NEW</span>}
             />
@@ -236,9 +242,9 @@ export default function App() {
 `<MarqueeTicker
   itemHeight='30px'
   items={[
-    'Short notice',
-    'This is a very long notice that will scroll horizontally when overflowed',
-    'Supports both modern React and legacy React 0.14.x without breaking changes.',
+    'Works out of the box — no CSS import required.',
+    'Simple API, predictable behavior.',
+    'Designed for dashboards, notices, and system messages.',
   ]}
   prefix={() => <span className="prefix">🔔</span>}
   suffix={() => <span className="suffix">NEW</span>}

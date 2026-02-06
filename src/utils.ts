@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef, useCallback } from 'react'
-import type { MarqueTickerItemData } from './types'
+import type { MarqueTickerItemData, SlotRender } from './types'
 import Item from './components/Item'
 import Mask from './components/Mask'
 import Text from './components/Text'
@@ -63,6 +63,13 @@ export function isText(element: any): element is React.ReactElement<{ children: 
 
 function warn(message: string) {
   console.warn(`[react-marquee-ticker] ${message}`)
+}
+
+export function renderSlot(slot: SlotRender) {
+  if (typeof slot === 'function') {
+    return slot()
+  }
+  return slot
 }
 
 export function useEvent<T extends (...args: any[]) => any>(handler: T) {
