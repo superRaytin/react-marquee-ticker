@@ -8,7 +8,7 @@ declare let window: any
 const demoData = [
   'Short notice',
   'This is a very long notice that will scroll horizontally when overflowed',
-  'Another short one',
+  'Supports both modern React and legacy React 0.14.x without breaking changes.',
 ]
 
 export default function App() {
@@ -61,7 +61,7 @@ export default function App() {
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed',
-    'Another short one',
+    'Supports both modern React and legacy React 0.14.x without breaking changes.',
   ]}
 />`
             }
@@ -210,7 +210,7 @@ export default function App() {
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed',
-    'Another short one',
+    'Supports both modern React and legacy React 0.14.x without breaking changes.',
   ]}
 />`
             }
@@ -238,7 +238,7 @@ export default function App() {
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed',
-    'Another short one',
+    'Supports both modern React and legacy React 0.14.x without breaking changes.',
   ]}
   prefix={() => <span className="prefix">🔔</span>}
   suffix={() => <span className="suffix">NEW</span>}
@@ -260,7 +260,14 @@ export default function App() {
             />
           </div>
           {paused !== null && (
-            <div style={{ marginTop: '10px', fontSize: '20px' }}>{paused ? 'paused' : 'resume'}</div>
+            <div style={{
+              marginTop: '10px',
+              fontSize: '20px',
+              color: paused ? 'red' : 'green',
+              fontWeight: 'bold',
+            }}>
+              {paused ? 'PAUSED' : 'RESUME'}
+            </div>
           )}
         </div>
         <pre className="demo-code">
@@ -271,7 +278,7 @@ export default function App() {
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed',
-    'Another short one',
+    'Supports both modern React and legacy React 0.14.x without breaking changes.',
   ]}
   paused={paused}
 />
