@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import type { MarqueeTickerProps, MarqueTickerItemData, Timer } from './types'
 import { normalizeItemsFromChildren, normalizeItemsFromProps, useEvent } from './utils'
 
-export default function useTicker(props: MarqueeTickerProps, containerRef: React.RefObject<HTMLDivElement | null>) {
+export default function useTicker(props: MarqueeTickerProps) {
   const {
     itemHeight,
     interval = 3000,
@@ -18,6 +18,7 @@ export default function useTicker(props: MarqueeTickerProps, containerRef: React
 
   const [items, setItems] = useState<MarqueTickerItemData[]>([])
 
+  const containerRef = useRef<HTMLDivElement | null>(null)
   const _moveTimer = useRef<Timer>(null)
   const _pauseRetryTimer = useRef<Timer>(null)
   const _shiftTimer = useRef<Timer>(null)
@@ -149,5 +150,5 @@ export default function useTicker(props: MarqueeTickerProps, containerRef: React
     return stayDuration
   }
 
-  return { items }
+  return { items, containerRef }
 }

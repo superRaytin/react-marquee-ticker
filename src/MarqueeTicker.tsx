@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import type { MarqueeTickerProps, MarqueTickerItemData, SlotRender } from './types'
+import React from 'react'
+import type { MarqueeTickerProps, MarqueTickerItemData } from './types'
 import Item from './components/Item'
 import Mask from './components/Mask'
 import Text from './components/Text'
@@ -17,9 +17,7 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
     suffix,
   } = props
 
-  const _containerRef = useRef<HTMLDivElement | null>(null)
-
-  const { items } = useTicker(props, _containerRef)
+  const { items, containerRef } = useTicker(props)
 
   const renderItem = (item: MarqueTickerItemData, index: number) => {
     if (React.isValidElement(item.content)) {
@@ -46,7 +44,7 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
   const finalClassName = className ? `react-marquee-ticker ${className}` : 'react-marquee-ticker'
 
   return (
-    <div ref={_containerRef} className={finalClassName} style={style}>
+    <div ref={containerRef} className={finalClassName} style={style}>
       {renderSlot(prefix)}
       <div className="react-marquee-ticker-list-wrapper" style={{ height: itemHeight }}>
         {items && items.length && (
