@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useLayoutEffect, useRef, useCallback } from 'react'
 import type { MarqueTickerItemData } from './types'
 import Item from './components/Item'
 import Mask from './components/Mask'
@@ -13,9 +13,6 @@ export function normalizeItemsFromProps(
   }))
 }
 
-/**
- * normalize children and validate structure
- */
 export function normalizeItemsFromChildren(children: React.ReactNode): MarqueTickerItemData[] {
   const items = React.Children.toArray(children).filter(
     React.isValidElement,
@@ -64,9 +61,19 @@ export function isText(element: any): element is React.ReactElement<{ children: 
   return React.isValidElement(element) && element.type === Text
 }
 
-/**
- * Dev-only warning helper
- */
 function warn(message: string) {
   console.warn(`[react-marquee-ticker] ${message}`)
+}
+
+export function useEvent<T extends (...args: any[]) => any>(handler: T) {
+  const handlerRef = useRef<T | null>(null)
+
+  useLayoutEffect(() => {
+    handlerRef.current = handler
+  })
+
+  return useCallback((...args: Parameters<T>): ReturnType<T> => {
+    const fn = handlerRef.current
+    return (fn as T)(...args)
+  }, [])
 }

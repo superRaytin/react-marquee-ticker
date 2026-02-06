@@ -4,7 +4,7 @@ import Item from './components/Item'
 import MarqueeMask from './components/Mask'
 import MarqueeText from './components/Text'
 import './MarqueeTicker.style'
-import { normalizeItemsFromChildren, normalizeItemsFromProps } from './utils'
+import { normalizeItemsFromChildren, normalizeItemsFromProps, useEvent } from './utils'
 
 export default function MarqueeTicker(props: MarqueeTickerProps) {
   const {
@@ -42,7 +42,7 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
     } else if (children) {
       setItems(normalizeItemsFromChildren(children))
     }
-  }, [props.items, children])
+  }, [props.items])
 
   useEffect(() => {
     if (_containerRef?.current) init()
@@ -81,7 +81,7 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
     _moveTimer.current = setTimeout(move, interval + marqueeTime)
   }
 
-  const move = () => {
+  const move = useEvent(() => {
     if (paused) {
       stop()
       _pauseRetryTimer.current = setTimeout(move, interval)
@@ -91,7 +91,7 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
     if (_pauseRetryTimer.current) clearTimeout(_pauseRetryTimer.current)
 
     step()
-  }
+  })
 
   const step = () => {
     const listContainer = _containerRef.current?.querySelector<HTMLElement>(

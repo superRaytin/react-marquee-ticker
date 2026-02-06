@@ -8,6 +8,7 @@ declare let window: any
 const demoData = [
   'Short notice',
   'This is a very long notice that will scroll horizontally when overflowed',
+  'Another short one',
 ]
 
 export default function App() {
@@ -25,8 +26,10 @@ export default function App() {
 
   const handleVisibilityChange = () => {
     if (document.hidden) {
+      console.log('paused')
       setPaused(true)
     } else {
+      console.log('resume')
       setTimeout(() => setPaused(false), 500)
     }
   }
@@ -58,6 +61,7 @@ export default function App() {
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed',
+    'Another short one',
   ]}
 />`
             }
@@ -77,6 +81,9 @@ export default function App() {
                 <MarqueeTicker.Item key={2}>
                   This is a very long notice that will scroll horizontally when overflowed.
                 </MarqueeTicker.Item>
+                <MarqueeTicker.Item key={3}>
+                  Another short one
+                </MarqueeTicker.Item>
               </MarqueeTicker>
             </div>
           </div>
@@ -90,6 +97,9 @@ export default function App() {
   </MarqueeTicker.Item>
   <MarqueeTicker.Item key={2}>
     This is a very long notice that will scroll horizontally when overflowed.
+  </MarqueeTicker.Item>
+  <MarqueeTicker.Item key={3}>
+    Another short one
   </MarqueeTicker.Item>
 </MarqueeTicker>
 `
@@ -200,6 +210,7 @@ export default function App() {
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed',
+    'Another short one',
   ]}
 />`
             }
@@ -227,6 +238,7 @@ export default function App() {
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed',
+    'Another short one',
   ]}
   prefix={() => <span className="prefix">🔔</span>}
   suffix={() => <span className="suffix">NEW</span>}
@@ -259,6 +271,7 @@ export default function App() {
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed',
+    'Another short one',
   ]}
   paused={paused}
 />
