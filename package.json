@@ -21,7 +21,8 @@
     "build:types": "tsc -p tsconfig.types.json",
     "build": "tsdown && npm run build:types && npm run build:css && npm run post-build",
     "post-build": "ts-node scripts/post-build.ts",
-    "prepublishOnly": "npm run lint && npm run build"
+    "prepublishOnly": "npm run lint && npm run build",
+    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag $PACKAGE_VERSION && git push --tags"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": "prettier --write"
