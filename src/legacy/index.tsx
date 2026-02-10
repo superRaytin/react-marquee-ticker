@@ -20,7 +20,6 @@ export interface MarqueeTickerProps {
   // Vertical scrolling
   interval?: number
   speed?: number
-  paused?: boolean
 
   // Horizontal (overflow) scrolling
   autoMarquee?: boolean
@@ -64,13 +63,10 @@ export default class MarqueeTicker extends React.Component<
 
   componentWillReceiveProps(nextProps: Readonly<MarqueeTickerProps>): void {
     if (nextProps.items && nextProps.items.length) {
-      this.setState({ items: nextProps.items }, () => {
-        this.init()
-      })
-    } else if (nextProps.children && React.isValidElement(nextProps.children)) {
-      this.setState({ items: nextProps.children }, () => {
-        this.init()
-      })
+      if (JSON.stringify(nextProps.items) === JSON.stringify(this.props.items)) return
+      this.setState({ items: nextProps.items }, this.init)
+    } else if (nextProps.children && nextProps.children !== this.props.children && React.isValidElement(nextProps.children)) {
+      this.setState({ items: nextProps.children }, this.init)
     }
   }
 
@@ -155,7 +151,7 @@ export default class MarqueeTicker extends React.Component<
     this.setState({ paused: true })
   }
 
-  unPause = () => {
+  unpause = () => {
     this.setState({ paused: false })
   }
 
@@ -240,9 +236,9 @@ export default class MarqueeTicker extends React.Component<
 
   render() {
     const { items } = this.state
-    const { style = {}, className, itemHeight, prefix, suffix, children } = this.props
+    const { style = {}, className, itemHeight, prefix, suffix } = this.props
 
-    if ((!items || !items.length) && !children) return null
+    if (!items || !items.length) return null
 
     const finalClassName = className ? `react-marquee-ticker ${className}` : 'react-marquee-ticker'
 
