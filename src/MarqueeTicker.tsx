@@ -8,14 +8,7 @@ import useTicker from './useTicker'
 import './MarqueeTicker.style'
 
 export default function MarqueeTicker(props: MarqueeTickerProps) {
-  const {
-    style = {},
-    className,
-    itemHeight,
-    placeholder,
-    prefix,
-    suffix,
-  } = props
+  const { style = {}, className, itemHeight, placeholder, prefix, suffix } = props
 
   const { items, containerRef } = useTicker(props)
 

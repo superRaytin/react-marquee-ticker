@@ -65,7 +65,11 @@ export default class MarqueeTicker extends React.Component<
     if (nextProps.items && nextProps.items.length) {
       if (JSON.stringify(nextProps.items) === JSON.stringify(this.props.items)) return
       this.setState({ items: nextProps.items }, this.init)
-    } else if (nextProps.children && nextProps.children !== this.props.children && React.isValidElement(nextProps.children)) {
+    } else if (
+      nextProps.children &&
+      nextProps.children !== this.props.children &&
+      React.isValidElement(nextProps.children)
+    ) {
       this.setState({ items: nextProps.children }, this.init)
     }
   }
