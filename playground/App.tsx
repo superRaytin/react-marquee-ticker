@@ -257,7 +257,7 @@ export default function App() {
 
       <div className='block'>
         <div className='left'>
-          <h1>Pause and resume scrolling on page visibility change</h1>
+          <h1>Pause / Unpause scrolling on page visibility change</h1>
           <div className='preview'>
             <MarqueeTicker
               itemHeight='30px'

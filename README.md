@@ -144,6 +144,15 @@ For very old React versions **before hooks** (for example **React 0.14.x**), thi
 import MarqueeTicker from 'react-marquee-ticker/legacy'
 ```
 
+This entry uses classic class-based lifecycle methods (componentDidMount, componentWillReceiveProps, componentWillUnmount).
+
+It has been verified to work correctly in:
+- React 0.14.9
+- React 15.7.0
+- React 16.7.0
+
+> ⚠️ In React **16.3+**, componentWillReceiveProps is considered legacy and may trigger warnings under **StrictMode**, but it still works as expected.
+
 ### Limitations
 
 The legacy build is intentionally **minimal and stable**:
