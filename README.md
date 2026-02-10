@@ -12,9 +12,9 @@ A lightweight React component for vertically looping texts, with optional horizo
 ## 🚀 Basic Usage
 
 ```jsx
-import Ticker from 'react-marquee-ticker';
+import MarqueeTicker from 'react-marquee-ticker';
 
-<Ticker
+<MarqueeTicker
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed'
