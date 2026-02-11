@@ -1,5 +1,3 @@
-# react-marquee-ticker
-
 A lightweight React component for vertically looping texts, with optional horizontal marquee animation when content overflows.
 
 [![NPM version][npm-image]][npm-url]
@@ -19,14 +17,14 @@ import MarqueeTicker from 'react-marquee-ticker';
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed'
   ]}
-  itemHeight="60px"
+  itemHeight="30px"
 />
 ```
 
 The above is equivalent to:
 
 ```jsx
-<MarqueeTicker itemHeight="60px">
+<MarqueeTicker itemHeight="30px">
   <MarqueeTicker.Item>Short notice</MarqueeTicker.Item>
   <MarqueeTicker.Item>This is a very long notice that will scroll horizontally when overflowed.</MarqueeTicker.Item>
 </MarqueeTicker>
@@ -34,9 +32,13 @@ The above is equivalent to:
 
 > ⚠️ When the `items` prop is provided, `children` will be ignored
 
-## 🎮 Demo
+## 🎮 Demo & Playground
 
-👉 https://superRaytin.github.io/react-marquee-ticker/
+👉 **Live Demo**  
+https://superRaytin.github.io/react-marquee-ticker/
+
+👉 **CodeSandbox**  
+[Hooks – modern React](https://codesandbox.io/p/sandbox/react-marquee-ticker-kc8z82) | [Legacy – React <=16.7](https://codesandbox.io/p/sandbox/react-marquee-ticker-react-v15-7-0-m8l66h)
 
 
 ## 📦 Installation
@@ -55,7 +57,7 @@ npm i react-marquee-ticker
 |----|----|----|----|
 | `items` | `<ReactElement \| string>[]` | `[]` | List of ticker items |
 | `placeholder` | `string` | `-` | Text shown when `items` is empty |
-| `itemHeight` | `string` | **required** | Height of each item (e.g. `"47px"`) |
+| `itemHeight` | `string` | **required** | Height of each item (e.g. `"30px"`) |
 | `style` | `React.CSSProperties` | `-` | Inline styles for the container |
 | `className` | `string` | `-` | Container class name |
 | `singleLine` | `boolean` | `false` | Enable single-line mode with ellipsis (`nowrap + ellipsis`). Only works when `autoMarquee={false}` |
