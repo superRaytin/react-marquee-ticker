@@ -21,7 +21,7 @@ import MarqueeTicker from 'react-marquee-ticker';
 />
 ```
 
-The above is equivalent to:
+Alternative way to provide `items`:
 
 ```jsx
 <MarqueeTicker itemHeight="30px">
@@ -56,7 +56,6 @@ npm i react-marquee-ticker
 | Prop | Type | Default | Description |
 |----|----|----|----|
 | `items` | `<ReactElement \| string>[]` | `[]` | List of ticker items |
-| `placeholder` | `string` | `-` | Text shown when `items` is empty |
 | `itemHeight` | `string` | **required** | Height of each item (e.g. `"30px"`) |
 | `style` | `React.CSSProperties` | `-` | Inline styles for the container |
 | `className` | `string` | `-` | Container class name |
@@ -82,8 +81,8 @@ npm i react-marquee-ticker
 
 | Prop | Type | Description |
 |----|----|----|
-| `prefix` | `() => ReactNode` | Content rendered before the text |
-| `suffix` | `() => ReactNode` | Content rendered after the text |
+| `prefix` | `() => ReactNode` | Content rendered before the container |
+| `suffix` | `() => ReactNode` | Content rendered after the container |
 
 Example:
 
@@ -95,23 +94,12 @@ Example:
 />
 ```
 
-### Children
-
-| Prop | Type | Description |
-|----|----|----|
-| `children` | `ReactElement[]` | Alternative way to provide items |
-
-When `autoMarquee` is enabled and the content **may exceed the container width**, it is recommended to use the `Mask` + `Text` structure to ensure horizontal scrolling works correctly:
+### Item / Mask / Text
 
 ```jsx
 <MarqueeTicker itemHeight="60px" autoMarquee>
-  <MarqueeTicker.Item>
-    <MarqueeTicker.Mask>
-      <MarqueeTicker.Text>Short notice</MarqueeTicker.Text>
-    </MarqueeTicker.Mask>
-  </MarqueeTicker.Item>
-
-  <MarqueeTicker.Item>
+  <MarqueeTicker.Item key="1">Short notice</MarqueeTicker.Item>
+  <MarqueeTicker.Item key="2">
     <MarqueeTicker.Mask>
       <MarqueeTicker.Text>
         This is a very long notice that will scroll horizontally when overflowed.
@@ -122,20 +110,13 @@ When `autoMarquee` is enabled and the content **may exceed the container width**
 </MarqueeTicker>
 ```
 
-#### Structure Overview
+> `Mask / Text` should be used together to enable horizontal scrolling when text overflows.
 
-```jsx
-<Item>
-  <Mask>   // Defines the visible clipping area
-    <Text> // The actual horizontally scrolling content
-    </Text>
-  </Mask>
-</Item>
-```
+- `Item` represents a single item
+- `Mask` defines and controls the visible clipping area
+- `Text` is the element that participates in horizontal animation. The component measures the actual width of `Text` to calculate scroll distance and duration automatically
 
-- `Mask` controls the visible area (typically `overflow: hidden`)
-- `Text` is the element that participates in horizontal animation
-- The component measures the actual width of `Text` to calculate scroll distance and duration automatically
+> ⚠️ `Mask` and `Text` are only required when `autoMarquee` is enabled and you need to compose content with a high degree of customization. Otherwise, using `Item` alone is sufficient.
 
 
 ## 🕰️ Legacy React Support
@@ -161,7 +142,7 @@ The legacy build is intentionally **minimal and stable**:
 
 - ❌ No Hooks
 - ❌ No `Item / Mask / Text` sub components
-- ❌ No compound component API
+- ❌ No `paused` prop. the paused state can only be controlled via `ref.pause() / ref.unpause()`
 - ✅ Basic children or `items` usage
 
 ### Supported children structure
@@ -189,7 +170,7 @@ Notes:
 - Class names (`ticker-item`, `ticker-mask`, `ticker-text`) are required for layout and scrolling
 - Any other structure may result in undefined behavior
 
-If you need `Item / Mask / Text` composition or automatic marquee behavior, please use the modern entry with React `16.8+`.
+If you need `Item / Mask / Text` composition, please use the modern entry with React `>=16.8`.
 
 # License
 
