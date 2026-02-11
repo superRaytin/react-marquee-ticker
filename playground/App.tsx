@@ -150,11 +150,7 @@ export default function App() {
           <h1>Using a Mask + Text structure</h1>
           <div className='preview'>
             <MarqueeTicker itemHeight='30px' autoMarquee={true}>
-              <MarqueeTicker.Item key={1}>
-                <MarqueeTicker.Mask>
-                  <MarqueeTicker.Text>Short notice</MarqueeTicker.Text>
-                </MarqueeTicker.Mask>
-              </MarqueeTicker.Item>
+              <MarqueeTicker.Item key={1}>Short notice</MarqueeTicker.Item>
               <MarqueeTicker.Item key={2}>
                 <MarqueeTicker.Mask>
                   <MarqueeTicker.Text>
@@ -170,11 +166,7 @@ export default function App() {
           <code className="code language-jsx">
             {
 `<MarqueeTicker itemHeight='30px' autoMarquee>
-  <MarqueeTicker.Item key={1}>
-    <MarqueeTicker.Mask>
-      <MarqueeTicker.Text>Short notice</MarqueeTicker.Text>
-    </MarqueeTicker.Mask>
-  </MarqueeTicker.Item>
+  <MarqueeTicker.Item key={1}>Short notice</MarqueeTicker.Item>
   <MarqueeTicker.Item key={2}>
     <MarqueeTicker.Mask>
       <MarqueeTicker.Text>

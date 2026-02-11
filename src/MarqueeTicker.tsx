@@ -26,11 +26,9 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
     }
 
     return (
-      <div key={index} style={{ height: `${itemHeight}` }} className="ticker-item">
-        <div className="ticker-mask">
-          <div className="ticker-text">{item.content}</div>
-        </div>
-      </div>
+      <Item key={index} style={{ height: `${itemHeight}` }}>
+        {item.content}
+      </Item>
     )
   }
 
