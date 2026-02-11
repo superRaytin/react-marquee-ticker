@@ -8,7 +8,6 @@ type MarqueeTickerItem = ReactNode | string
 export interface MarqueeTickerProps {
   // Data
   items?: MarqueeTickerItem[]
-  placeholder?: string
 
   // Layout
   itemHeight: string
@@ -21,7 +20,7 @@ export interface MarqueeTickerProps {
   interval?: number
   speed?: number
 
-  // Horizontal (overflow) scrolling
+  // Horizontal scrolling (overflow)
   autoMarquee?: boolean
   marqueeSpeed?: number
   marqueeDelayBeforeScroll?: number
@@ -207,7 +206,7 @@ export default class MarqueeTicker extends React.Component<
   }
 
   renderItem = (item: MarqueeTickerItem) => {
-    const { itemClassName, itemHeight, placeholder } = this.props
+    const { itemClassName, itemHeight } = this.props
 
     if (React.isValidElement(item)) {
       const existingProps = (item.props || {}) as any
@@ -226,7 +225,7 @@ export default class MarqueeTicker extends React.Component<
     return (
       <div className={finalItemClassName} style={{ height: `${itemHeight}` }}>
         <div className="ticker-mask">
-          <div className="ticker-text">{item || placeholder}</div>
+          <div className="ticker-text">{item}</div>
         </div>
       </div>
     )

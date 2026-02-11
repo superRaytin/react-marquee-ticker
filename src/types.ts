@@ -17,7 +17,6 @@ export type Timer = ReturnType<typeof setTimeout> | null
 export interface MarqueeTickerProps {
   // Data
   items?: Array<string | ReactElement>
-  placeholder?: string
 
   // Layout
   itemHeight: string
@@ -30,7 +29,7 @@ export interface MarqueeTickerProps {
   speed?: number
   paused?: boolean
 
-  // Horizontal (overflow) scrolling
+  // Horizontal scrolling (overflow)
   autoMarquee?: boolean
   marqueeSpeed?: number
   marqueeDelayBeforeScroll?: number

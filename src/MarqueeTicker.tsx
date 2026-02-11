@@ -8,7 +8,7 @@ import useTicker from './useTicker'
 import './MarqueeTicker.style'
 
 export default function MarqueeTicker(props: MarqueeTickerProps) {
-  const { style = {}, className, itemHeight, placeholder, prefix, suffix } = props
+  const { style = {}, className, itemHeight, prefix, suffix } = props
 
   const { items, containerRef } = useTicker(props)
 
@@ -28,7 +28,7 @@ export default function MarqueeTicker(props: MarqueeTickerProps) {
     return (
       <div key={index} style={{ height: `${itemHeight}` }} className="ticker-item">
         <div className="ticker-mask">
-          <div className="ticker-text">{item.content || placeholder}</div>
+          <div className="ticker-text">{item.content}</div>
         </div>
       </div>
     )
