@@ -77,21 +77,19 @@ export default function App() {
 
       <div className='block'>
         <div className='left'>
-          <div className='left'>
-            <h1>Provide items via children</h1>
-            <div className='preview'>
-              <MarqueeTicker itemHeight='30px'>
-                <MarqueeTicker.Item key={1}>
-                  Short notice
-                </MarqueeTicker.Item>
-                <MarqueeTicker.Item key={2}>
-                  This is a very long notice that will scroll horizontally when overflowed.
-                </MarqueeTicker.Item>
-                <MarqueeTicker.Item key={3}>
-                  Supports both modern React and legacy React 0.14.x without breaking changes.
-                </MarqueeTicker.Item>
-              </MarqueeTicker>
-            </div>
+          <h1>Provide items via children</h1>
+          <div className='preview'>
+            <MarqueeTicker itemHeight='30px'>
+              <MarqueeTicker.Item key={1}>
+                Short notice
+              </MarqueeTicker.Item>
+              <MarqueeTicker.Item key={2}>
+                This is a very long notice that will scroll horizontally when overflowed.
+              </MarqueeTicker.Item>
+              <MarqueeTicker.Item key={3}>
+                Supports both modern React and legacy React 0.14.x without breaking changes.
+              </MarqueeTicker.Item>
+            </MarqueeTicker>
           </div>
         </div>
         <pre className="demo-code">
@@ -116,19 +114,17 @@ export default function App() {
 
       <div className='block'>
         <div className='left'>
-          <div className='left'>
-            <h1>Disable horizontal marquee scrolling</h1>
-            <div className='preview'>
-              <MarqueeTicker itemHeight='60px' autoMarquee={false}>
-                <MarqueeTicker.Item key={1}>
-                  Lightweight React marquee component, zero runtime dependencies.
-                </MarqueeTicker.Item>
-                <MarqueeTicker.Item key={2}>
-                  Vertical ticker with optional horizontal marquee for long content.
-                      &nbsp;<a href="#">See Details</a>
-                </MarqueeTicker.Item>
-              </MarqueeTicker>
-            </div>
+          <h1>Disable horizontal marquee scrolling</h1>
+          <div className='preview'>
+            <MarqueeTicker itemHeight='60px' autoMarquee={false}>
+              <MarqueeTicker.Item key={1}>
+                Lightweight React marquee component, zero runtime dependencies.
+              </MarqueeTicker.Item>
+              <MarqueeTicker.Item key={2}>
+                Vertical ticker with optional horizontal marquee for long content.
+                    &nbsp;<a href="#">See Details</a>
+              </MarqueeTicker.Item>
+            </MarqueeTicker>
           </div>
         </div>
         <pre className="demo-code">
