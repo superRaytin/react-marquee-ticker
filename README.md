@@ -1,13 +1,14 @@
-A lightweight React component for vertically looping texts, with optional horizontal marquee animation when content overflows.
+# React Marquee Ticker
 
-[![NPM version][npm-image]][npm-url]
-[![Downloads][downloads-image]][npm-url]
+![alt text](playground/public/react-marquee-ticker-gif.gif "React Marquee Ticker Gif")
 
-[npm-url]: https://npmjs.org/package/react-marquee-ticker
-[downloads-image]: http://img.shields.io/npm/dm/react-marquee-ticker.svg
-[npm-image]: http://img.shields.io/npm/v/react-marquee-ticker.svg
+![NPM version](https://img.shields.io/npm/v/react-marquee-ticker.svg) ![Downloads](https://img.shields.io/npm/dm/react-marquee-ticker.svg) [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 🚀 Basic Usage
+> A lightweight React component for vertically looping texts, with optional horizontal marquee animation when content overflows.
+
+👉 [**Live Demo**](https://superRaytin.github.io/react-marquee-ticker/)
+
+## Basic Usage
 
 ```jsx
 import MarqueeTicker from 'react-marquee-ticker';
@@ -32,16 +33,13 @@ Alternative way to provide `items`:
 
 > ⚠️ When the `items` prop is provided, `children` will be ignored
 
-## 🎮 Demo & Playground
-
-👉 **Live Demo**  
-https://superRaytin.github.io/react-marquee-ticker/
+## Playground
 
 👉 **CodeSandbox**  
 [Hooks – modern React](https://codesandbox.io/p/sandbox/react-marquee-ticker-kc8z82) | [Legacy – React <=16.7](https://codesandbox.io/p/sandbox/react-marquee-ticker-react-v15-7-0-m8l66h)
 
 
-## 📦 Installation
+## Installation
 
 ```bash
 # yarn
@@ -51,7 +49,7 @@ yarn add react-marquee-ticker
 npm i react-marquee-ticker
 ```
 
-## 🧩 API
+## API
 
 | Prop | Type | Default | Description |
 |----|----|----|----|
@@ -128,7 +126,7 @@ Example:
 > ⚠️ `Mask` and `Text` are only required when `autoMarquee` is enabled and you need to compose content with a high degree of customization. Otherwise, using `Item` alone is sufficient.
 
 
-## 🕰️ Legacy React Support
+## Legacy React Support
 
 For very old React versions **before hooks** (for example **React 0.14.x**), this package provides a legacy entry:
 
@@ -149,10 +147,10 @@ It has been verified to work correctly in:
 
 The legacy build is intentionally **minimal and stable**:
 
-- ❌ No Hooks
-- ❌ No `Item / Mask / Text` sub components
-- ❌ No `paused` prop. the paused state can only be controlled via `ref.pause() / ref.unpause()`
-- ✅ Basic children or `items` usage
+- No Hooks
+- No `Item / Mask / Text` sub components
+- No `paused` prop. the paused state can only be controlled via `ref.pause() / ref.unpause()`
+- Basic children or `items` usage
 
 ### Supported children structure
 
@@ -180,7 +178,3 @@ Notes:
 - Any other structure may result in undefined behavior
 
 If you need `Item / Mask / Text` composition, please use the modern entry with React `>=16.8`.
-
-# License
-
-MIT, see the [LICENSE](/LICENSE) file for detail.

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import MarqueeTicker from 'react-marquee-ticker'
 import '../src/index.less'
 import './app.less'
@@ -8,12 +8,12 @@ declare let window: any
 const demoData = [
   'Short notice',
   'This is a very long notice that will scroll horizontally when overflowed',
-  'Supports both modern React and legacy React 0.14.x without breaking changes.',
+  'Supports both modern React and legacy React(eg. 0.14.x) without breaking changes.',
 ]
 
 const demoData2 = [
-  'Works out of the box — no CSS import required.',
   'Simple API, predictable behavior.',
+  'Supports both modern React and legacy React(eg. 0.14.x) without breaking changes.',
   'Designed for dashboards, notices, and system messages.',
 ]
 
@@ -67,7 +67,7 @@ export default function App() {
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed',
-    'Supports both modern React and legacy React 0.14.x without breaking changes.',
+    'Supports both modern React and legacy React(eg. 0.14.x) without breaking changes.',
   ]}
 />`
             }
@@ -87,7 +87,7 @@ export default function App() {
                 This is a very long notice that will scroll horizontally when overflowed.
               </MarqueeTicker.Item>
               <MarqueeTicker.Item key={3}>
-                Supports both modern React and legacy React 0.14.x without breaking changes.
+                Supports both modern React and legacy React(eg. 0.14.x) without breaking changes.
               </MarqueeTicker.Item>
             </MarqueeTicker>
           </div>
@@ -103,7 +103,7 @@ export default function App() {
     This is a very long notice that will scroll horizontally when overflowed.
   </MarqueeTicker.Item>
   <MarqueeTicker.Item key={3}>
-    Supports both modern React and legacy React 0.14.x without breaking changes.
+    Supports both modern React and legacy React(eg. 0.14.x) without breaking changes.
   </MarqueeTicker.Item>
 </MarqueeTicker>
 `
@@ -230,8 +230,8 @@ export default function App() {
 `<MarqueeTicker
   itemHeight='30px'
   items={[
-    'Works out of the box — no CSS import required.',
     'Simple API, predictable behavior.',
+    'Supports both modern React and legacy React(eg. 0.14.x) without breaking changes.',
     'Designed for dashboards, notices, and system messages.',
   ]}
   prefix={() => <span className="prefix">🔔</span>}
@@ -272,7 +272,7 @@ export default function App() {
   items={[
     'Short notice',
     'This is a very long notice that will scroll horizontally when overflowed',
-    'Supports both modern React and legacy React 0.14.x without breaking changes.',
+    'Supports both modern React and legacy React(eg. 0.14.x) without breaking changes.',
   ]}
   paused={paused}
 />
