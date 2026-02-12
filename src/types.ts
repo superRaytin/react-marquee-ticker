@@ -47,6 +47,7 @@ export interface MarqueeTickerProps {
 export interface MarqueeTickerItemProps {
   style?: React.CSSProperties
   className?: string
+  onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
   children: ReactNode
 }
 

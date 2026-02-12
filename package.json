@@ -1,6 +1,6 @@
 {
   "name": "react-marquee-ticker",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "A lightweight React component for vertically looping texts, with optional horizontal marquee animation when content overflows.",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",

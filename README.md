@@ -51,14 +51,14 @@ yarn add react-marquee-ticker
 npm i react-marquee-ticker
 ```
 
-## 🧩 Props
+## 🧩 API
 
 | Prop | Type | Default | Description |
 |----|----|----|----|
 | `items` | `<ReactElement \| string>[]` | `[]` | List of ticker items |
 | `itemHeight` | `string` | **required** | Height of each item (e.g. `"30px"`) |
 | `style` | `React.CSSProperties` | `-` | Inline styles for the container |
-| `className` | `string` | `-` | Container class name |
+| `className` | `string` | `-` | Custom class name for the container |
 | `singleLine` | `boolean` | `false` | Enable single-line mode with ellipsis (`nowrap + ellipsis`). Only works when `autoMarquee={false}` |
 | `interval` | `number` | `3000` | Stay duration for each item (ms) |
 | `speed` | `number` | `400` | Vertical scroll speed (ms) |
@@ -94,7 +94,17 @@ Example:
 />
 ```
 
-### Item / Mask / Text
+### MarqueeTicker.Item
+
+`MarqueeTicker.Item` represents a single item.
+
+| Prop | Type | Description |
+|----|----|----|
+| `className` | `string` | Custom class name for the item container |
+| `style` | `React.CSSProperties` | Inline styles for the item container |
+| `onClick` | `(event) => void` | Click handler |
+
+### MarqueeTicker.Mask / MarqueeTicker.Text
 
 ```jsx
 <MarqueeTicker itemHeight="60px" autoMarquee>
@@ -110,9 +120,8 @@ Example:
 </MarqueeTicker>
 ```
 
-> `Mask / Text` should be used together to enable horizontal scrolling when text overflows.
+`Mask / Text` should be used together to enable horizontal scrolling when text overflows.
 
-- `Item` represents a single item
 - `Mask` defines and controls the visible clipping area
 - `Text` is the element that participates in horizontal animation. The component measures the actual width of `Text` to calculate scroll distance and duration automatically
 
